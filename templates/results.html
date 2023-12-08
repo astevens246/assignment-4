@@ -1,31 +1,17 @@
 {% extends 'base.html' %}
+
 {% block content %}
-
 <section>
-    {# TODO: Replace the hard-coded city and date below with data from the server #}
-    <h1>Weather in {{ city1.name }} vs. {{ city2.name }}</h1>
-    <p>on {{ date.strftime('%A, %B %d, %Y') }}</p>
+    <h1>Weather in {{ context['city'] }}</h1>
+    <p>on {{ context['date'].strftime('%A, %B %d, %Y') }}</p>
     
-    {# TODO: Add the temperature, description, humidity, wind speed, sunrise, & sunset below to replace the placeholders #}
-    <h2>{{ city1.name }}</h2>
     <ul>
-        <li>Temperature: {{ city1.temp }} {{ units_letter }}</li>
-        <li>Description: {{ city1.description }}</li>
-        <li>Humidity: {{ city1.humidity }}%</li>
-        <li>Wind speed: {{ city1.wind_speed }} miles/hour</li>
-        <li>Sunrise: {{ city1.sunset.strftime('%H:%M:%S') }}</li>
-        <li>Sunset: {{ city1.sunset.strftime('%H:%M:%S') }}</li>
-    </ul>
-
-    <h2>{{ city2.name }}</h2>
-    <ul>
-        <li>Temperature: {{ city2.temp }} {{ units_letter }}</li>
-        <li>Description: {{ city2.description }}</li>
-        <li>Humidity: {{ city2.humidity }}%</li>
-        <li>Wind speed: {{ city2.wind_speed }} miles/hour</li>
-        <li>Sunrise: {{ city2.sunset.strftime('%H:%M:%S') }}</li>
-        <li>Sunset: {{ city2.sunset.strftime('%H:%M:%S') }}</li>
+        <li>Temperature: {{ context['temp'] }}{{ context['units_letter'] }}</li>
+        <li>Description: {{ context['description'] }}</li>
+        <li>Humidity: {{ context['humidity'] }}%</li>
+        <li>Wind speed: {{ context['wind_speed'] }}{{ context['units_letter'] }}/hour</li>
+        <li>Sunrise: {{ context['sunrise'] }}</li>
+        <li>Sunset: {{ context['sunset'] }}</li>
     </ul>
 </section>
-
 {% endblock %}
